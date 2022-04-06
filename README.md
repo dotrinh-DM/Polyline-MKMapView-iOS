@@ -1,5 +1,6 @@
-# Tóm tắt
+# Tóm tắt 🤩
 Giống tính năng của các app chạy bộ, vẽ lại lịch sử các địa điểm đã chạy 😎
+
 # Tưởng tượng
 <p align="center">
   <img src="https://user-images.githubusercontent.com/8064517/161900359-3847f293-b8ed-41e6-9e90-7c696088f82a.png" width="450" title="dotrinh">
