@@ -17,19 +17,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" showsScale="YES" showsTraffic="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sa3-Vd-oaW">
-                                <rect key="frame" x="20" y="44" width="374" height="818"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
                             </mapView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kmo-8m-fh5">
+                                <rect key="frame" x="182.5" y="831" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Center" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PQM-vb-48P">
+                                <rect key="frame" x="86" y="836" width="92" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="sa3-Vd-oaW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2cM-Wg-AtV"/>
-                            <constraint firstItem="sa3-Vd-oaW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="BF5-lS-cj4"/>
-                            <constraint firstItem="sa3-Vd-oaW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="LDl-DY-4E5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sa3-Vd-oaW" secondAttribute="trailing" constant="20" id="gQk-9M-J8t"/>
+                            <constraint firstItem="Kmo-8m-fh5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2bb-MQ-RYI"/>
+                            <constraint firstItem="Kmo-8m-fh5" firstAttribute="leading" secondItem="PQM-vb-48P" secondAttribute="trailing" constant="4.5" id="DLd-xm-jyw"/>
+                            <constraint firstItem="sa3-Vd-oaW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ek6-hj-SvW"/>
+                            <constraint firstItem="Kmo-8m-fh5" firstAttribute="top" secondItem="sa3-Vd-oaW" secondAttribute="bottom" constant="18" id="cUh-8E-2k7"/>
+                            <constraint firstItem="PQM-vb-48P" firstAttribute="centerY" secondItem="Kmo-8m-fh5" secondAttribute="centerY" id="oFJ-BG-TpS"/>
+                            <constraint firstItem="Kmo-8m-fh5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qqU-40-VoS"/>
+                            <constraint firstItem="sa3-Vd-oaW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="sKA-YR-kN6"/>
+                            <constraint firstItem="sa3-Vd-oaW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wYc-ES-EmA"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="autoCenter" destination="Kmo-8m-fh5" id="2Lr-Xd-gCD"/>
                         <outlet property="customMkMapV" destination="sa3-Vd-oaW" id="3GZ-EI-fLs"/>
                     </connections>
                 </viewController>
