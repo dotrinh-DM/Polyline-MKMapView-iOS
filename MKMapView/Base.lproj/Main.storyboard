@@ -28,13 +28,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FcQ-ba-5VT">
+                                <rect key="frame" x="370" y="836" width="24" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Kmo-8m-fh5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2bb-MQ-RYI"/>
+                            <constraint firstItem="FcQ-ba-5VT" firstAttribute="centerY" secondItem="Kmo-8m-fh5" secondAttribute="centerY" id="AdV-aY-RJ5"/>
                             <constraint firstItem="Kmo-8m-fh5" firstAttribute="leading" secondItem="PQM-vb-48P" secondAttribute="trailing" constant="4.5" id="DLd-xm-jyw"/>
                             <constraint firstItem="sa3-Vd-oaW" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Ek6-hj-SvW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FcQ-ba-5VT" secondAttribute="trailing" constant="20" id="Swi-EJ-j60"/>
                             <constraint firstItem="Kmo-8m-fh5" firstAttribute="top" secondItem="sa3-Vd-oaW" secondAttribute="bottom" constant="18" id="cUh-8E-2k7"/>
                             <constraint firstItem="PQM-vb-48P" firstAttribute="centerY" secondItem="Kmo-8m-fh5" secondAttribute="centerY" id="oFJ-BG-TpS"/>
                             <constraint firstItem="Kmo-8m-fh5" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qqU-40-VoS"/>
@@ -45,6 +53,7 @@
                     <connections>
                         <outlet property="autoCenter" destination="Kmo-8m-fh5" id="2Lr-Xd-gCD"/>
                         <outlet property="customMkMapV" destination="sa3-Vd-oaW" id="3GZ-EI-fLs"/>
+                        <outlet property="speedLbl" destination="FcQ-ba-5VT" id="kGS-uV-6wt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -8,14 +8,20 @@
 import UIKit
 import MapKit
 import CoreLocation
+import AVFoundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var customMkMapV: MKMapView!
     @IBOutlet weak var autoCenter: UISwitch!
+    @IBOutlet weak var speedLbl: UILabel!
     
     var locationManager = CLLocationManager()
     var coordArray:[CLLocationCoordinate2D] = []
+    
+    var synthesizer: AVSpeechSynthesizer!
+    var voice: AVSpeechSynthesisVoice!
+    var currentSpeed: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,23 +39,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         customMkMapV.isScrollEnabled = true
         customMkMapV.center = view.center
         
-        // adding co-ordinates for poly line (added static, we can make it dyanamic)
-//        let coords1 = CLLocationCoordinate2D(latitude: 35.555139, longitude: 139.722241)
-//        let coords2 = CLLocationCoordinate2D(latitude: 35.555009941986874, longitude: 139.72272022691322)
-//        let coords3 = CLLocationCoordinate2D(latitude: 35.55596118732464, longitude: 139.7230868058718)
-//        let coords4 = CLLocationCoordinate2D(latitude: 35.55651062646226, longitude: 139.7212121315655)
-//        let coords5 = CLLocationCoordinate2D(latitude: 35.55573046119005, longitude: 139.72054398577677)
         
         // updating current location method
         if CLLocationManager.locationServicesEnabled() {
             locationManager.requestAlwaysAuthorization()
             locationManager.startUpdatingLocation()
         }
+        
+        self.synthesizer = AVSpeechSynthesizer()
+        self.voice = AVSpeechSynthesisVoice.init(language: "ja-JP")
+        
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { timer in
+            if(!self.currentSpeed.elementsEqual("0.0")) {
+                let str = "時速は" + self.currentSpeed + "キロ"
+                self.speak(str)
+                print("speaking \(str)")
+            }
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("didUpdateLocations")
         let userLocation:CLLocation = locations[0] as CLLocation
+        print("didUpdateLocations %@", userLocation)
+        var speed = Float(userLocation.speed * 3.6)
+        speed = speed <= 0 ? 0: speed;
+        
+        currentSpeed = String(format: "%.1f", speed)
+        speedLbl.text = currentSpeed + " km/h"
+        print("didUpdateLocations \(String(describing: currentSpeed))")
+        
         let currentPosition = CLLocationCoordinate2D(latitude: userLocation.coordinate.latitude, longitude: userLocation.coordinate.longitude)
         coordArray.append(currentPosition)
         let testline = MKPolyline(coordinates: coordArray, count: coordArray.count)
@@ -69,6 +87,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             return testlineRenderer
         }
         return MKOverlayRenderer()
+    }
+    
+    func speak(_ text: String) {
+        let utterance = AVSpeechUtterance.init(string: text)
+        utterance.voice = self.voice
+        //        utterance.rate = 0.5
+        self.synthesizer.speak(utterance)
     }
 }
 
