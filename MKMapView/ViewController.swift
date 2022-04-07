@@ -50,9 +50,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         self.voice = AVSpeechSynthesisVoice.init(language: "en-US")
     
         Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { timer in
-            let str = "The speed is " + self.currentSpeed + "km/h"
-            self.speak(str)
-            print("speaking \(str)")
+            if(!self.currentSpeed.elementsEqual("0.0")) {
+                let str = "The speed is " + self.currentSpeed + "km/h"
+                self.speak(str)
+                print("speaking \(str)")
+            }
         }
     }
     
